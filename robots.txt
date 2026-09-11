@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yatinkumar-coder.github.io/yatindhiman.github.io/sitemap.xml
