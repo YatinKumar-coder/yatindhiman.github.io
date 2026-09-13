@@ -75,6 +75,25 @@
       .profile-animation-panel::before { content: ""; position: absolute; inset: 0 0 auto; z-index: 1; width: 100%; height: 7.2%; background: #020711; pointer-events: none; }
       .profile-animation-placeholder { width: min(100%, 340px); aspect-ratio: 1; display: grid; place-items: center; border: 1px dashed rgba(213, 237, 93, .62); border-radius: 50%; color: #d5ed5d; font: 11px "DM Mono", monospace; letter-spacing: .08em; text-align: center; }
       .profile-animation-placeholder span { display: block; max-width: 130px; line-height: 1.5; }
+      .hero-research-animation { position: relative; min-height: 360px; height: clamp(360px, 34vw, 440px); overflow: hidden; isolation: isolate; background: #071528; border: 1px solid rgba(23, 36, 31, .22); }
+      .hero-research-animation .robot-scene, .hero-research-animation .robot-reveal { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .hero-research-animation .robot-scene { opacity: .48; filter: saturate(.78) brightness(.68); }
+      .hero-research-animation .robot-reveal { clip-path: inset(0 0 0 100%); filter: saturate(.92) brightness(.98); animation: robot-assemble 9s ease-in-out infinite; }
+      .hero-research-animation::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(3, 12, 28, .94) 0%, rgba(3, 12, 28, .72) 40%, rgba(3, 12, 28, .10) 76%); }
+      .hero-research-animation::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background-image: radial-gradient(circle at 20% 24%, rgba(118, 226, 255, .72) 0 1px, transparent 1.8px), radial-gradient(circle at 47% 78%, rgba(176, 142, 255, .7) 0 1px, transparent 1.9px); background-size: 86px 86px, 121px 121px; opacity: .8; animation: data-field 7s linear infinite; }
+      .neural-streams { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; }
+      .neural-streams path { fill: none; stroke: rgba(107, 223, 255, .78); stroke-width: 1.15; stroke-dasharray: 6 12; stroke-linecap: round; animation: neural-flow 3.8s linear infinite; }
+      .neural-streams path:nth-child(2) { stroke: rgba(198, 159, 255, .75); animation-duration: 4.8s; animation-delay: -1.4s; }
+      .neural-streams path:nth-child(3) { stroke: rgba(128, 241, 210, .66); animation-duration: 4.2s; animation-delay: -2.6s; }
+      .animation-copy { position: absolute; z-index: 3; left: clamp(24px, 4vw, 50px); bottom: clamp(24px, 4vw, 45px); max-width: min(76%, 420px); color: #f5f8fb; }
+      .animation-copy .kicker { color: #9ce9ff; margin-bottom: 13px; }
+      .animation-copy h1 { max-width: 470px; font-size: clamp(37px, 4vw, 64px); color: #fff; text-shadow: 0 2px 20px rgba(0, 0, 0, .34); }
+      .animation-copy h1 em { color: #b9e8f5; }
+      .animation-copy p:last-child { max-width: 390px; margin: 17px 0 0; color: rgba(238, 247, 250, .86); font-size: 14px; line-height: 1.52; }
+      @keyframes neural-flow { to { stroke-dashoffset: -110; } }
+      @keyframes data-field { to { background-position: 86px -86px, -121px 121px; } }
+      @keyframes robot-assemble { 0%, 16% { clip-path: inset(0 0 0 100%); opacity: 0; } 42%, 80% { clip-path: inset(0 0 0 42%); opacity: 1; } 100% { clip-path: inset(0 0 0 42%); opacity: .88; } }
+      @media (prefers-reduced-motion: reduce) { .hero-research-animation .robot-reveal, .hero-research-animation::after, .neural-streams path { animation: none; } .hero-research-animation .robot-reveal { clip-path: inset(0 0 0 42%); opacity: 1; } }
       .quote-block { display: grid; grid-template-columns: minmax(290px, .82fr) minmax(0, 1.18fr); gap: 8vw; align-items: center; padding: 105px 10vw; text-align: left; }
       .quote-kicker, .quote-attribution { margin: 0; font: 11px "DM Mono", monospace; letter-spacing: .08em; }
       .quote-kicker { color: #405047; }
@@ -139,9 +158,20 @@
       <section class="hero">
         <div class="hero-grid">
           <div class="hero-copy reveal">
-            <p class="kicker">Yatin Kumar</p>
-            <h1>Bridging machine intelligence<br />with <em>mathematical models<br />of nature.</em></h1>
-            <p class="intro">I am a PhD Research Scholar at NIT Hamirpur. My work combines rigorous numerical analysis with physics-informed neural networks, Kolmogorov-Arnold networks, wavelet neural networks, interpolation methods, and operator learning. I hold an M.Sc. in Mathematics from HNB Garhwal University and a B.Sc. in Physics, Chemistry, and Mathematics from D.A.V. (P.G.) College, Dehradun.</p>
+            <div class="hero-research-animation" role="img" aria-label="Animated visualization of neural signals flowing into a scientific research robot">
+              <img class="robot-scene" src="assets/neural-research-robot-hero.png" alt="" aria-hidden="true" />
+              <img class="robot-reveal" src="assets/neural-research-robot-hero.png" alt="" aria-hidden="true" />
+              <svg class="neural-streams" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M-40 118 C150 68 282 246 498 186 S700 244 1040 106" />
+                <path d="M-20 374 C174 306 272 457 498 340 S734 210 1020 408" />
+                <path d="M-30 486 C144 444 258 288 486 420 S766 532 1028 306" />
+              </svg>
+              <div class="animation-copy">
+                <p class="kicker">Yatin Kumar · NIT Hamirpur</p>
+                <h1>From neural signals<br />to <em>scientific insight.</em></h1>
+                <p>PhD Research Scholar developing reliable learning methods for complex physical systems.</p>
+              </div>
+            </div>
             <div class="hero-actions" style="flex-wrap: wrap;">
               <a class="button button-dark" href="#research">Explore my work <span>↓</span></a>
               <a class="text-link" href="https://scholar.google.com/citations?user=PbJLoMIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Google Scholar <span>↗</span></a>
