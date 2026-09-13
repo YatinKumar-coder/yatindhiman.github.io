@@ -76,9 +76,7 @@
       .profile-animation-placeholder { width: min(100%, 340px); aspect-ratio: 1; display: grid; place-items: center; border: 1px dashed rgba(213, 237, 93, .62); border-radius: 50%; color: #d5ed5d; font: 11px "DM Mono", monospace; letter-spacing: .08em; text-align: center; }
       .profile-animation-placeholder span { display: block; max-width: 130px; line-height: 1.5; }
       .hero-research-animation { position: relative; min-height: 360px; height: clamp(360px, 34vw, 440px); overflow: hidden; isolation: isolate; background: #071528; border: 1px solid rgba(23, 36, 31, .22); }
-      .hero-research-animation .robot-scene, .hero-research-animation .robot-reveal { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-      .hero-research-animation .robot-scene { opacity: .48; filter: saturate(.78) brightness(.68); }
-      .hero-research-animation .robot-reveal { clip-path: inset(0 0 0 100%); filter: saturate(.92) brightness(.98); animation: robot-assemble 9s ease-in-out infinite; }
+      .hero-research-animation .solver-scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.9) brightness(.92); }
       .hero-research-animation::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(3, 12, 28, .94) 0%, rgba(3, 12, 28, .72) 40%, rgba(3, 12, 28, .10) 76%); }
       .hero-research-animation::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background-image: radial-gradient(circle at 20% 24%, rgba(118, 226, 255, .72) 0 1px, transparent 1.8px), radial-gradient(circle at 47% 78%, rgba(176, 142, 255, .7) 0 1px, transparent 1.9px); background-size: 86px 86px, 121px 121px; opacity: .8; animation: data-field 7s linear infinite; }
       .neural-streams { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; }
@@ -92,8 +90,7 @@
       .animation-copy p:last-child { max-width: 390px; margin: 17px 0 0; color: rgba(238, 247, 250, .86); font-size: 14px; line-height: 1.52; }
       @keyframes neural-flow { to { stroke-dashoffset: -110; } }
       @keyframes data-field { to { background-position: 86px -86px, -121px 121px; } }
-      @keyframes robot-assemble { 0%, 16% { clip-path: inset(0 0 0 100%); opacity: 0; } 42%, 80% { clip-path: inset(0 0 0 42%); opacity: 1; } 100% { clip-path: inset(0 0 0 42%); opacity: .88; } }
-      @media (prefers-reduced-motion: reduce) { .hero-research-animation .robot-reveal, .hero-research-animation::after, .neural-streams path { animation: none; } .hero-research-animation .robot-reveal { clip-path: inset(0 0 0 42%); opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .hero-research-animation::after, .neural-streams path { animation: none; } }
       .quote-block { display: grid; grid-template-columns: minmax(290px, .82fr) minmax(0, 1.18fr); gap: 8vw; align-items: center; padding: 105px 10vw; text-align: left; }
       .quote-kicker, .quote-attribution { margin: 0; font: 11px "DM Mono", monospace; letter-spacing: .08em; }
       .quote-kicker { color: #405047; }
@@ -158,9 +155,8 @@
       <section class="hero">
         <div class="hero-grid">
           <div class="hero-copy reveal">
-            <div class="hero-research-animation" role="img" aria-label="Animated visualization of neural signals flowing into a scientific research robot">
-              <img class="robot-scene" src="assets/neural-research-robot-hero.png" alt="" aria-hidden="true" />
-              <img class="robot-reveal" src="assets/neural-research-robot-hero.png" alt="" aria-hidden="true" />
+            <div class="hero-research-animation" role="img" aria-label="Animated visualization of neural signals evolving into a fractional-wave solver field">
+              <img class="solver-scene" src="assets/neural-solver-flow.gif" alt="" aria-hidden="true" />
               <svg class="neural-streams" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
                 <path d="M-40 118 C150 68 282 246 498 186 S700 244 1040 106" />
                 <path d="M-20 374 C174 306 272 457 498 340 S734 210 1020 408" />
